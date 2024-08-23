@@ -1,8 +1,53 @@
 #root {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  --wavesY: 29%;
+  --wavesX: 46%;
+  --waves: radial-gradient(circle at 85% 49%, #ffffff 26%, rgba(255,255,255,0) 27%) repeat-x 46% 29%,
+  radial-gradient(circle at 78% 63%, #5f79ff 29%, rgba(9,3,255,0) 30%) repeat-x 46% 29%/5% 11%,
+  conic-gradient(from 233deg, #5f79ff 2%, rgba(121,0,255,0) 4%) repeat-x 51% 29%/5% 11%,
+  conic-gradient(from 60deg at 50% 48%, #90cfff 0%, rgba(144,207,255,1) 21%, rgba(144,207,255,1) 49%, #90cfff 50%, rgba(255,255,255,0) 50%) repeat-x 49.87% 31%/5% 11%,
+  conic-gradient(from 60deg at 50% 48%, #4641ff 0%, #4641ff 50%, rgba(255,255,255,0) 50%) repeat-x 49.87% 31%/5% 11%,
+  conic-gradient(from 60deg at 50% 48%, #5f79ff 50%, rgba(255,255,255,0) 50%) repeat-x 50% 30%/5% 11%,
+  linear-gradient(transparent 33%, #90cfff 35%, #90cfff 100%),
+  #ffffff;
+  --waves-mod:var(--waves-top),var(--wavesCover),var(--manualWavesOutline);
+  /* linear-gradient(transparent 33%, #90cfff 35%, #90cfff 100%), #ffffff; */
+  --waves-top-offset-y: calc(var(--wavesY) );
+  --waves-top-offset-x: calc(var(--wavesX) + 4%);
+  --waves-top: radial-gradient(
+        circle at 85% 49%,
+        #ffffff 26%,
+        rgba(255, 255, 255, 0) 27%
+      )
+      var(--waves-top-offset-x) var(--waves-top-offset-y),
+    radial-gradient(
+        circle at 78% 63%,
+        #5f79ff 29%,
+        rgba(9, 3, 255, 0) 30%
+      )
+      var(--waves-top-offset-x) calc(var(--waves-top-offset-y) - 0.65%),
+    conic-gradient(from 233deg, #5f79ff 2%, rgba(121, 0, 255, 0) 4%)
+      calc(var(--waves-top-offset-x)) var(--waves-top-offset-y);
+
+  --wavesCover: conic-gradient(
+      from 60deg at 50% 48%,
+      #90cfff 0%,
+      rgba(144, 207, 255, 1) 21%,
+      rgba(144, 207, 255, 1) calc(var(--wavesX) + 3%),
+      #90cfff 50%,
+      rgba(255, 255, 255, 0) 50%
+    )
+    calc(var(--wavesX) + 2.87%) calc(var(--wavesY) + 2%);
+  --manualWavesOutline: conic-gradient(
+      from 60deg at 50% 48%,
+      #5f79ff 50%,
+      rgba(255, 255, 255, 0) 50%
+    )
+    calc(var(--wavesX) + 2.87%) calc(var(--wavesY) + 1%);
 }
 
 .logo {
@@ -39,4 +84,46 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.waves {
+  background: var(--waves);
+  width: 100%;
+  background-repeat: repeat-x;
+  background-size: 5% 11%;
+  /* height: 100vh; */
+  /* background-blend-mode: luminosity; */
+}
+.wavesHighlights {
+  background-color: aqua;
+  mask: repeating-linear-gradient(
+        0deg,
+        transparent 1%,
+        transparent 49%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 1) 100%
+      )
+      2vw 0/16vw 8vw,
+    repeating-linear-gradient(
+        90deg,
+        transparent 1%,
+        transparent 49%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 1) 100%
+      )
+      2vw 14vw/16vw 4vw,
+    conic-gradient(
+        from 120deg at 50% 45%,
+        rgba(255, 255, 255, 0) 26%,
+        #000000 27%,
+        #000000 50%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 66%,
+        #000000 68%,
+        #000000 100%
+      )
+      50% 0/8vw 4vw,
+    #ffffff;
+  mask-repeat: space round;
+  /* filter: contrast(0%); */
 }
