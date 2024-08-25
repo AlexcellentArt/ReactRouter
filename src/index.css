@@ -35,7 +35,12 @@ body > div {
   background-color: #275db3;
   color: white;
 }
-.home{
+.green{
   background-color: green;
+  color: white;
+}
+
+.home{
+  background-color: pink;
   color: white;
 }
