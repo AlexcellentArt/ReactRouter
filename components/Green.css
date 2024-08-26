@@ -1,0 +1,47 @@
+:root
+{
+    --scale-grass:20%;
+    --grass-blade: radial-gradient(at 52% 150%, #000000 70.711%, transparent 70.711%) 0 0/200% 200%,
+            radial-gradient(at 59% 60%, #ffffff 70.711%, transparent 70.711%) 0 0/200% 200%,
+            radial-gradient(#000000 70.711%, transparent 70.711%) 0 0/200% 200%;
+    --grass-tuft:URL(src/assets/SimpleGrassColored.svg);
+    --grass-mask:URL(src/assets/GrassMask.svg);
+}
+
+.scene{
+    background-color:darkgreen;
+  }
+  @keyframes grass-wave{
+    0%,45% {
+        transform: skew(-5deg);
+    }
+
+  25%,65% {
+   transform: skew(-8deg);
+  }
+    50% {
+        transform: skew(0deg);
+    }
+  75%,95% {
+        transform: skew(5deg);
+  }
+  85%,100% {
+        transform: skew(8deg);
+    }
+}
+.grass {
+    --anim-settings:ease-in-out infinite alternate;
+    position: fixed;
+    animation:  grass-wave 10s var(--anim-settings);
+    background: var(--grass-tuft) -200%;
+    width: 100%;
+    height: 40%;
+    bottom: 30%;
+    mask: var(--grass-tuft) -200%;
+    /* background-color: green; */
+}
+.delayed{
+    bottom: calc(30% + (10% * var(--anim-delay)));
+    animation-delay: calc(var(--anim-delay) * 2.5s);
+    z-index: calc(var(--anim-delay)*-1);
+  }

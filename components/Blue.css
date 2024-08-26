@@ -1,0 +1,188 @@
+#root {
+    --waves-dark-color:#0073ff;
+    --waves-mid-color:#00dfff;
+    --waves-light-color:#00fcff;
+    /* base values of waves */
+    --wavesY: 25%;
+    --wavesX: 25%;
+    --waves-XY: var(--wavesY) var(--wavesX);
+    --waves-position: -35%;
+  
+    /* offsets */
+    --waves-outline-offset:2%;
+    --waves-offset-y: 20%;
+    --waves-top-offset: var(--wavesX) calc(var(--wavesY) + var( --waves-outline-offset));
+  
+    /* mask */
+    --waves-mask:linear-gradient(194deg, rgb(0, 0, 0) 0%, white 100%)  exclude,
+    radial-gradient(at 0% 0%, #a49e9e 70.711%, transparent 70.711%) repeat-x 17% 0/var(--waves-XY),radial-gradient(at 50% 10%, #000000 70.711%, transparent 70.711%) repeat-x 0 0/var(--waves-XY) intersect;
+  
+    /* base */
+    --waves-base-gradient:
+    linear-gradient(194deg, var(--waves-dark-color) 0%, var(--waves-light-color) 100%);
+    --waves:
+    radial-gradient(at 50% 10%, var(--waves-mid-color) 70.711%, transparent 70.711%) var(--waves-position) repeat-x 0 0/var(--waves-top-offset),
+    radial-gradient(at 0% 0%, var(--waves-mid-color) 70.711%, transparent 70.711%) repeat-x 17% 0/var(--waves-top-offset), linear-gradient(194deg, var(--waves-dark-color) 0%, var(--waves-light-color) 100%);
+
+    --hexagon-shape:polygon(50% -50%,100% 50%,50% 150%,0 50%);
+    
+    @property --hex-color {
+        syntax: "<color>";
+        inherits: false;
+        initial-value: cornflowerblue;
+      }
+  }
+  /* @keyframes waves-rise {
+    0% {
+          transform: translateY(0) rotate(-5deg) scale(100% 80%);
+      }
+    5% {
+      transform: translateY(5%) rotate(-4deg) scale(100% 90%);
+    }
+    25% {
+     transform: translateY(85%) rotate(5deg) scale(100% 220%);
+    }
+    75%{
+      transform: translateY(30%) rotate(5deg) scale(102% 160%);
+    }
+    100% {
+          transform: translateY(-25%) rotate(-3deg) scale(125%,80%);
+      }
+  } */
+  @keyframes waves-scale {
+    0% {
+          transform: scale(110% 110%);
+      }
+    5% {
+      transform: scale(100% 100%);
+    }
+    25% {
+     transform: scale(100% 220%);
+    }
+    75%{
+      transform:scale(102% 160%);
+    }
+    100% {
+          transform: scale(125%,105%);
+      }
+  }
+  @keyframes waves-rotate {
+    0% {
+          transform:rotate(-5deg);
+      }
+    5% {
+      transform: rotate(-4deg);
+    }
+    25% {
+     transform:  rotate(5deg) ;
+    }
+    75%{
+      transform: rotate(5deg) ;
+    }
+    100% {
+          transform: rotate(-3deg);
+      /* translate: translateY(34%); */
+      }
+  }
+  @keyframes translate {
+    0% {
+        transform: translateY(25%);
+    }
+  /* 5% {
+    transform: translateY(5%);
+  }
+  25% {
+   transform: translateY(85%);
+  }
+  75%{
+    transform: translateY(30%);
+  } */
+  100% {
+        transform: translateY(70%);
+    /* translate: translateY(34%); */
+    }
+  }
+  @keyframes waves-tilt {
+      0% {
+          transform: skew(2deg,-8deg);
+      }
+  
+    25% {
+     transform: skew(-4deg,0deg);
+    }
+      50% {
+          transform: skew(3deg,-8deg);
+      }
+    75% {
+          transform: skew(1deg,4deg);
+    }
+    100% {
+          transform: skew(0deg,-5deg);
+      }
+  }
+  
+  .waves {
+    position: fixed;
+    --anim-settings:ease-in-out infinite alternate-reverse;
+    /* transform-origin: top center; */
+    animation: translate 5.5s var(--anim-settings), waves-tilt 8.5s var(--anim-settings), waves-scale 3.5s var(--anim-settings);
+    animation-composition: add, add, add;
+    background-color: #5f79ff;
+    width: 200%;
+    height: 100%;
+    mask-repeat: repeat-x;
+    mask-size: 5% 11%;
+    mask: var(--waves-mask) ;
+    background: radial-gradient(at 50% 10%, var(--waves-mid-color) 70.711%, transparent 70.711%) repeat-x  0 0/var(--waves-top-offset),
+    radial-gradient(at 0% 0%, var(--waves-mid-color) 70.711%, transparent 70.711%) repeat-x 17% 0/var(--waves-top-offset), linear-gradient(194deg, var(--waves-dark-color) 0%, var(--waves-light-color) 100%);
+    /* background-position: var(--waves-position) var(--waves-position) var(--waves-position) var(--waves-position); */
+    mask-type: luminance;
+  }
+  .scene{
+    background-color: #0073ff;  }
+  
+  .wavesHighlights {
+    background-color: aqua;
+    mask: repeating-linear-gradient(
+          0deg,
+          transparent 1%,
+          transparent 49%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 1) 100%
+        )
+        2vw 0/16vw 8vw,
+      repeating-linear-gradient(
+          90deg,
+          transparent 1%,
+          transparent 49%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 1) 100%
+        )
+        2vw 14vw/16vw 4vw,
+      conic-gradient(
+          from 120deg at 50% 45%,
+          rgba(255, 255, 255, 0) 26%,
+          #000000 27%,
+          #000000 50%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(255, 255, 255, 0) 66%,
+          #000000 68%,
+          #000000 100%
+        )
+        50% 0/8vw 4vw,
+      #ffffff;
+    mask-repeat: space round;
+    /* filter: contrast(0%); */
+  }
+  /* HTML: <div class="hexagon"></div> */
+.hexagon {
+    height: 200px; /* adjust to control the size  */
+    aspect-ratio: 1/cos(30deg);
+    clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+    background: #3B8686;
+  }
+.scene { background-color: darkblue;}
+  /* custom property used to stagger animations again on load */
+  .delayed{
+    animation-delay: calc(var(--anim-delay) * 2.5s);
+  }
