@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Scene from './Scene';
+import "./Red.css";
 function Red(props) {
-  const [fireAmount, setFireAmount] = useState(props.fire);
+  const [fireAmount, setFireAmount] = useState(props.state.fire);
 
   function makeState(){
     return {fire:{amount:fireAmount, setAmount:setFireAmount}}

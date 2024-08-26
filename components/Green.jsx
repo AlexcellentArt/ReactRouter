@@ -3,7 +3,7 @@ import "./Green.css";
 import Scene from './Scene';
 
 function Green(props) {
-  const [grassAmount, setGrassAmount] = useState(props.grass);
+  const [grassAmount, setGrassAmount] = useState(props.state.grass);
 
   function makeState(){
     return {grass:{amount:grassAmount, setAmount:setGrassAmount}}

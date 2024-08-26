@@ -1,0 +1,69 @@
+:root {
+  --flame: URL(src/assets/PlainFire.svg);
+}
+.scene {
+  background-color: darkgreen;
+}
+@keyframes fire-wave {
+  0%,
+  45% {
+    transform: skew(-5deg);
+  }
+
+  25%,
+  65% {
+    transform: skew(-8deg);
+  }
+  50% {
+    transform: skew(0deg);
+  }
+  75%,
+  95% {
+    transform: skew(5deg);
+  }
+  85%,
+  100% {
+    transform: skew(8deg);
+  }
+}
+@keyframes fire-scale {
+    0%,
+    45% {
+      transform: scaleY(100%);
+    }
+  
+    25%,
+    65% {
+      transform: scaleY(50%);
+    }
+    50% {
+      transform: scaleY(80%);
+    }
+    75%,
+    95% {
+      transform: scaleY(120%);
+    }
+    85%,
+    100% {
+      transform: scaleY(110%);
+    }
+  }
+.fire {
+    background: var(--flame) repeat-x;
+  --anim-settings: ease-in-out infinite alternate;
+  position: fixed;
+  transform-origin: bottom;
+  animation: fire-wave 10s var(--anim-settings), fire-scale 10s var(--anim-settings);
+  animation-composition: add,add;
+  width: 100%;
+  height: 100%;
+  top: 10%;
+}
+.scene {
+  background-color: darkred;
+}
+.delayed {
+    top: calc(10% + (10% * var(--anim-delay)));
+  animation-delay: calc(var(--anim-delay) * 2.5s);
+  z-index: calc(var(--anim-delay) * -1);
+}

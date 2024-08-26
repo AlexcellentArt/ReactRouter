@@ -1,0 +1,7 @@
+.keyVal{
+    display: flex;
+    flex-direction: row;
+    :first-of-type(p){
+        font-weight: bolder;
+    }
+}

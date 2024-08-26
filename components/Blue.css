@@ -139,8 +139,7 @@
     mask-type: luminance;
   }
   .scene{
-    background-color: #0073ff;  
-  }
+    background-color: #0073ff;  }
   
   .wavesHighlights {
     background-color: aqua;
@@ -181,4 +180,9 @@
     aspect-ratio: 1/cos(30deg);
     clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
     background: #3B8686;
+  }
+.scene { background-color: darkblue;}
+  /* custom property used to stagger animations again on load */
+  .delayed{
+    animation-delay: calc(var(--anim-delay) * 2.5s);
   }
