@@ -1,0 +1,10 @@
+:root
+{
+    --grass-blade: radial-gradient(at 52% 150%, #000000 70.711%, transparent 70.711%) 0 0/200% 200%,
+            radial-gradient(at 59% 60%, #ffffff 70.711%, transparent 70.711%) 0 0/200% 200%,
+            radial-gradient(#000000 70.711%, transparent 70.711%) 0 0/200% 200%;
+}
+
+.grass {
+    background-image: var(--grass-blade);
+}
